@@ -30,7 +30,7 @@ public class MyUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //调用 userMapper 中方法，根据用户名查询数据库
-        List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("manager");
+        List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("admins,ROLE_sale");
         QueryWrapper<UmsUser> wrapper = new QueryWrapper<>();
         // where username=？
         wrapper.eq("username", username);
