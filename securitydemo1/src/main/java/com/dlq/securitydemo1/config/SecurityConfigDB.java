@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.AntPathMatcher;
 
 /**
  *@program: SpringSecurity
@@ -41,7 +42,8 @@ public class SecurityConfigDB extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().antMatchers("/","/test/hello","/user/login").permitAll() //设置哪些路径可以直接访问，不需要认证
                 //.antMatchers("/test/index").hasAuthority("admins")
                 //.antMatchers("/test/index").hasAnyAuthority("admins,manager")
-                .antMatchers("/test/index").hasRole("sale")
+                //.antMatchers("/test/index").hasRole("sale1")
+                .antMatchers("/test/index").hasAnyRole("sale,hr")
                 .anyRequest().authenticated()
                 .and().csrf().disable() // 关闭csrf防护
         ;
