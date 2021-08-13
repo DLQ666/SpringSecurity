@@ -1,6 +1,7 @@
 package com.dlq.securitydemo1.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,4 +19,10 @@ public class TestController {
     public String hello(){
         return "hello security";
     }
+
+    @GetMapping("/index")
+    public String index(){
+        return "hello index";
+    }
+
 }
