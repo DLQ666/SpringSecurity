@@ -39,7 +39,8 @@ public class SecurityConfigDB extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/user/login") //登录访问路径
                 .defaultSuccessUrl("/test/index").permitAll()// 登录成功之后，跳转路径
                 .and().authorizeRequests().antMatchers("/","/test/hello","/user/login").permitAll() //设置哪些路径可以直接访问，不需要认证
-                .antMatchers("/test/index").hasAuthority("admins")
+                //.antMatchers("/test/index").hasAuthority("admins")
+                .antMatchers("/test/index").hasAnyAuthority("admins,manager")
                 .anyRequest().authenticated()
                 .and().csrf().disable() // 关闭csrf防护
         ;
